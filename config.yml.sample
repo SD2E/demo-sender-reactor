@@ -1,0 +1,8 @@
+---
+logs:
+  level: DEBUG
+  file: ~
+  token: ~
+linked_reactors:
+  demo-listener:
+    ignore_err: false
