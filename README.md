@@ -1,21 +1,29 @@
-# Listener
+# Sender
 
-This Reactor listens for a message and verbosely logs its Reactor context when
-it receives one. Importantly, it logs not just the message but all the sender
-metadata that `reactors.utils.Reactor.send_message()` decorates inter-actor
-messages with.
+This Reactor listens for a message and tries to forward it along to another
+Reactor. In this specific case, it's the `demo-listener` so that Reactor-to-
+Reactor communications can be documented.
 
 ## Usage
 
-This Reactor is usable by all SD2 program participants. Its alias is
-`demo-listener` and its permissions are set to `EXECUTE` for the `world`
-user. Here's a trivial example of `reactor.py` code:
+An instance of Reactor is usable by all SD2 program participants. Its alias is
+`demo-sender` and its permissions are set to `EXECUTE` for the `world`
+user.
+
+Really, you want to use the code sample presented here to build your own
+messaging relationships between Reactors. Here's a trival send example from
+this actor's source code:
 
 ```python
-from reactors.utils import Reactor
-
 r = Reactor()
-exec_id = r.send_message('demo-listener', 'Your plaintext or JSON dict message')
-r.logger('demo-listener launched execution id {}'.format(exec_id))
+m = r.context.raw_message
+
+try:
+    exec_id = r.send_message('demo-listener', m, ignoreErrors=False,
+        retryMaxAttempts=3)
+except Exception as e:
+    r.on_failure("Send failure: {}".format(e))
+r.on_success("Sent message {}. Response was exec_id {}".format(
+    m, exec_id))
 ```
 
