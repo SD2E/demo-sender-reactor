@@ -16,9 +16,16 @@ if [ -f ".ACTOR_ID" ]; then
 fi
 
 deployopts=""
+# Skip cache
+if [ ! -z "$NO_CACHE" ];
+then
+    deployopts="${deployopts} -k"
+fi
+# Needs to be last
 if [ ! -z "$ACTOR_ID" ]; then
     deployopts="${deployopts} -U ${ACTOR_ID}"
 fi
+
 
 auth-tokens-refresh -S
 echo "abaco deploy ${deployopts} ${@}"

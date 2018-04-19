@@ -69,7 +69,10 @@ def test_reactor_resolve_actor_id(monkeypatch, caplog,
         monkeypatch.setenv(k, execution[0].get(k, ""))
     # s/reactor.py/reactor/
     r = reactor.Reactor()
-    actorId = r._resolve_actor_id('demo-listener')
+    from agavedb import AgaveKeyValStore
+    from reactors.alias import AliasStore
+    a = AliasStore(AgaveKeyValStore(r.client))
+    actorId = a.get_aliases()
+#    actorId = r.client.profiles.get()
     assert actorId == 'gO0JeWaBM4p3J'
-
 
