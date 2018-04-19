@@ -15,9 +15,10 @@ if [ -f ".ACTOR_ID" ]; then
     ACTOR_ID=$(cat .ACTOR_ID)
 fi
 
-echo "Set alias ${REACTOR_ALIAS}"
-syd add ${REACTOR_ALIAS} ${ACTOR_ID}
-syd acl ${REACTOR_ALIAS} world --read
+# echo "Set alias ${REACTOR_ALIAS}"
+# syd add ${REACTOR_ALIAS} ${ACTOR_ID}
+# syd acl ${REACTOR_ALIAS} world --read
 
 echo "Set permission for ${ACTOR_ID}"
 abaco share -u world -p EXECUTE ${ACTOR_ID}
+abaco share -u ABACO_WORLD -p EXECUTE ${ACTOR_ID}

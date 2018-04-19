@@ -30,6 +30,10 @@ if [ -z "${MESSAGE}" ]; then
     exit 1
 fi
 
+if [ ! -z "$RECIPIENT" ]; then
+    RUNOPTS=" -q RECIPIENT=$RECIPIENT"
+fi
+
 # MESSAGE='{"to": "matt.vaughn@gmail.com", "subject": "Hello, computer.", "body":"A keyboard... how quaint."}'
 
 MAX_ELAPSED=100 # Maximum duration for any async task
@@ -42,13 +46,13 @@ ELAPSED=0
 PAUSE=${INITIAL_PAUSE}
 EXC_STATUS=
 
-echo "abaco run -v -m \"${MESSAGE}\" ${ACTOR_ID}"
+echo "abaco run -v $RUNOPTS -m '{\"message\": \"Deployed recipient\"}' ${ACTOR_ID}"
 
 #set -x
 #abaco run -v -m "${MESSAGE}" ${ACTOR_ID}
 #set +x
 
-EXEC=$(abaco run -v -m "${MESSAGE}" ${ACTOR_ID})
+EXEC=$(abaco run -v $RUNOPTS -m '{"message": "Deployed recipient"}' ${ACTOR_ID})
 EXEC_ID=$(echo ${EXEC} | jq -r .result.executionId)
 # echo ${EXEC}
 echo "Execution ${EXEC_ID}"
