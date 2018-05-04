@@ -1,0 +1,56 @@
+{
+    "intent": {
+        "diagnostic-variables": [],
+        "experimental-variables": [{
+                "name": "pADH1:RGR-r2"
+            },
+            {
+                "name": "pGRR-r5:RGR-r1"
+            }
+        ],
+        "outcome-variables": [{
+                "name": "FL1-A"
+            },
+            {
+                "name": "FL1-H"
+            }
+        ],
+        "truth-table": {
+            "input": [{
+                    "experimental-variables": [
+                        0,
+                        0
+                    ],
+                    "strain": "https://hub.sd2e.org/user/sd2e/design/UWBF_7376/1"
+                },
+                {
+                    "experimental-variables": [
+                        0,
+                        1
+                    ],
+                    "strain": "https://hub.sd2e.org/user/sd2e/design/UWBF_7375/1"
+                },
+                {
+                    "experimental-variables": [
+                        1,
+                        0
+                    ],
+                    "strain": "https://hub.sd2e.org/user/sd2e/design/UWBF_7373/1"
+                },
+                {
+                    "experimental-variables": [
+                        1,
+                        1
+                    ],
+                    "strain": "https://hub.sd2e.org/user/sd2e/design/UWBF_7374/1"
+                }
+            ],
+            "output": [
+                0,
+                0,
+                0,
+                1
+            ]
+        }
+    }
+}

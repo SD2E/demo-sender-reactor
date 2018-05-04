@@ -9,7 +9,13 @@ def main():
     # If invoking message is valid JSON dict, forward it as the message
     r = Reactor()
     m = {'demo': 'sender'}
+
+    if os.environ.get('MSG', None) is not None:
+        m = os.environ.get('MSG')
+
     r.logger.debug("Aliases version {}".format(r.aliases.version))
+
+    r.logger.debug("Message {}".format(m))
 
     recipient = DEFAULT_RECIPIENT
     if os.environ.get('RECIPIENT', None) is not None:

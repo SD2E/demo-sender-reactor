@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
+set -x
+set -e
+
 if [[ -z "$DIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 fi
 
-MESSAGE_PATH="data/tests-deployed-message.json"
+MESSAGE_PATH="data/intent.json"
 
 # Load ACTOR_ID from env or disk
 ACTOR_ID="${1}"
@@ -30,6 +33,7 @@ if [ -z "${MESSAGE}" ]; then
     exit 1
 fi
 
+RECIPIENT='fail-fast'
 if [ ! -z "$RECIPIENT" ]; then
     RUNOPTS=" -q RECIPIENT=$RECIPIENT"
 fi
@@ -46,13 +50,13 @@ ELAPSED=0
 PAUSE=${INITIAL_PAUSE}
 EXC_STATUS=
 
-echo "abaco run -v $RUNOPTS -m '{\"message\": \"Deployed recipient\"}' ${ACTOR_ID}"
+echo "abaco run -v $RUNOPTS -m '${MESSAGE}' ${ACTOR_ID}"
 
 #set -x
 #abaco run -v -m "${MESSAGE}" ${ACTOR_ID}
 #set +x
 
-EXEC=$(abaco run -v $RUNOPTS -m '{"message": "Deployed recipient"}' ${ACTOR_ID})
+EXEC=$(abaco run -v $RUNOPTS -m "${MESSAGE}" ${ACTOR_ID})
 EXEC_ID=$(echo ${EXEC} | jq -r .result.executionId)
 # echo ${EXEC}
 echo "Execution ${EXEC_ID}"
