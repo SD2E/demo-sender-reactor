@@ -1,4 +1,6 @@
 {
+    "system-id": "data-sd2e-community",
+    "abs-path-data": "/ingest/testing/1524591146000/transcriptic/rule-30_q0/1/09242017/processed/fcs-etl-0.3.5u1/kxjB4Kjqb0Gy6-gOg30JJmgvJej/output/bayesdb_data.csv",
     "intent": {
         "diagnostic-variables": [],
         "experimental-variables": [{
