@@ -3,56 +3,65 @@
     "abs-path-data": "/ingest/testing/1524591146000/transcriptic/rule-30_q0/1/09242017/processed/fcs-etl-0.3.5u1/kxjB4Kjqb0Gy6-gOg30JJmgvJej/output/bayesdb_data.csv",
     "intent": {
         "diagnostic-variables": [],
-        "experimental-variables": [{
-                "name": "pADH1:RGR-r2"
+        "experimental-variables": [
+            {
+                "name": "plasmids",
+                "statistical-datatype": "nominal"
             },
             {
-                "name": "pGRR-r5:RGR-r1"
+                "name": "IPTG_measure",
+                "statistical-datatype": "nominal"
+            },
+            {
+                "name": "Larabinose_measure",
+                "statistical-datatype": "nominal"
+            },
+            {
+                "name": "aTc_measure",
+                "statistical-datatype": "nominal"
             }
         ],
-        "outcome-variables": [{
-                "name": "FL1-A"
-            },
+        "outcome-variables": [
             {
-                "name": "FL1-H"
+                "name": "GFP_MEFL",
+                "statistical-datatype": "numerical"
             }
         ],
         "truth-table": {
-            "input": [{
-                    "experimental-variables": [
-                        0,
-                        0
-                    ],
-                    "strain": "https://hub.sd2e.org/user/sd2e/design/UWBF_7376/1"
+            "input": [
+                {
+                    "name": "IPTG_measure",
+                    "mapping": {
+                            "0":"0",
+                            "1":"1"
+                        }
                 },
                 {
-                    "experimental-variables": [
-                        0,
-                        1
-                    ],
-                    "strain": "https://hub.sd2e.org/user/sd2e/design/UWBF_7375/1"
+                    "name": "aTc_measure",
+                    "mapping": {
+                            "0":"0",
+                            "1":"0.002"
+                        }
                 },
                 {
-                    "experimental-variables": [
-                        1,
-                        0
-                    ],
-                    "strain": "https://hub.sd2e.org/user/sd2e/design/UWBF_7373/1"
-                },
-                {
-                    "experimental-variables": [
-                        1,
-                        1
-                    ],
-                    "strain": "https://hub.sd2e.org/user/sd2e/design/UWBF_7374/1"
+                    "name": "Larabinose_measure",
+                    "mapping": {
+                            "0":"0",
+                            "1":"5"
+                        }
                 }
             ],
             "output": [
                 0,
+                1,
+                1,
                 0,
+                1,
                 0,
-                1
+                1,
+                0
             ]
-        }
+        },
+        "search": {"bql":"TBD search a result table for the strains to downsample"}
     }
 }
