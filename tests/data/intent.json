@@ -69,6 +69,20 @@
                 0
             ]
         },
-        "search": {"bql":"TBD search a result table for the strains to downsample"}
+        "search": {
+            "sql": [
+                    "SELECT                                                   ",
+                    "   IPTG_measure,                                         ",
+                    "   Larabinose_measure,                                   ",
+                    "   aTc_measure,                                          ",
+                    "   AVG(misbehaving_row) AS probability_surprising        ",
+                    "   FROM circuit_analysis_results                         ",
+                    "      GROUP BY                                           ",
+                    "           IPTG_measure,                                 ",
+                    "           Larabinose_measure,                           ",
+                    "           aTc_measure                                   ",
+                    "           ORDER BY probability_surprising DESC          "
+                ]
+        }
     }
 }
