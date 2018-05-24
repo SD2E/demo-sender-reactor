@@ -28,28 +28,35 @@
             }
         ],
         "truth-table": {
-            "input": [
-                {
-                    "name": "IPTG_measure",
-                    "mapping": {
-                            "0":"0",
-                            "1":"1"
-                        }
+            "input-variable-order": [
+                "IPTG_measure",
+                "aTc_measure",
+                "Larabinose_measure"
+            ],
+            "output-variable": "GFP_MEFL",
+            "mappings": {
+                "IPTG_measure": {
+                    "0": 0,
+                    "1": 1
+                    },
+                "aTc_measure": {
+                    "0":      0,
+                    "0.002":  1
                 },
-                {
-                    "name": "aTc_measure",
-                    "mapping": {
-                            "0":"0",
-                            "1":"0.002"
-                        }
-                },
-                {
-                    "name": "Larabinose_measure",
-                    "mapping": {
-                            "0":"0",
-                            "1":"5"
-                        }
+                "Larabinose_measure": {
+                    "0": 0,
+                    "5": 1
                 }
+            },
+            "input" : [
+                [0, 0, 0],
+                [0, 0, 1],
+                [0, 1, 0],
+                [0, 1, 1],
+                [1, 0, 0],
+                [1, 0, 1],
+                [1, 1, 0],
+                [1, 1, 1]
             ],
             "output": [
                 0,
