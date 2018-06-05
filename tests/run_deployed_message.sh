@@ -7,7 +7,7 @@ if [[ -z "$DIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 fi
 
-MESSAGE_PATH="data/intent.json"
+MESSAGE_PATH="data/intent-rule30.json"
 
 # Load ACTOR_ID from env or disk
 ACTOR_ID="${1}"

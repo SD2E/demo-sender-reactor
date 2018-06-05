@@ -1,0 +1,66 @@
+{
+    "system-id": "data-sd2e-community",
+    "abs-path-data": "/ingest/testing/foo/bar/baz/bayesdb_data.csv",
+    "intent": {
+        "controls": [
+            {
+                "design_name":"AAAA"
+            }
+         ],
+        "diagnostic-variables": [
+            {
+                "name": "media_name",
+                "statistical-datatype": "nominal"
+            }
+        ],
+        "experimental-variables": [
+            {
+                "name": "design_name",
+                "statistical-datatype": "nominal"
+            }
+        ],
+        "outcome-variables": [
+            {
+                "name": "GFP",
+                "statistical-datatype": "numerical"
+            }
+        ],
+        "truth-table": {
+            "input-variable-order": [
+                "design_name"
+            ],
+            "output-variable": "GFP",
+            "mappings": {
+                "design_name": {
+                    "WWW": [0, 0],
+                    "YYY": [0, 1],
+                    "ZZZ": [1, 0],
+                    "XXX": [1, 1]
+                    }
+            },
+            "input" : [
+                [0, 0],
+                [0, 1],
+                [1, 0],
+                [1, 1]
+            ],
+            "output": [
+                1,
+                0,
+                0,
+                0
+            ]
+        },
+        "search": {
+            "sql": [
+                    "SELECT                                                   ",
+                    "   design_name                                           ",
+                    "   AVG(misbehaving_row) AS probability_surprising        ",
+                    "   FROM circuit_analysis_results                         ",
+                    "      GROUP BY                                           ",
+                    "           design_name                                   ",
+                    "           ORDER BY probability_surprising DESC          "
+                ]
+        }
+    }
+}
