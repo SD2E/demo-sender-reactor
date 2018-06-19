@@ -13,7 +13,7 @@ def main():
     if os.environ.get('MSG', None) is not None:
         m = os.environ.get('MSG')
 
-    r.logger.debug("Aliases version {}".format(r.aliases.version))
+    #r.logger.debug("Aliases version {}".format(r.aliases.version))
 
     r.logger.debug("Message {}".format(m))
 
